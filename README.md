@@ -130,6 +130,16 @@ void Updater(){
 }
 ```
 
+**Note:**
+
+```
+rcu_read_lock()
+struct net_device* br_dev = netdev_master_upper_dev_get_rcu(pdev);
+rcu_read_unlock()
+```
+
+Kernel specifies netdev_master_upper_dev_get_rcu() function should use the ruc_lead_lock()/unlock() when called.
+
 **References:**
 
 https://free5gc.org/blog/20231129/20231129/#another-version-of-updater-with-call_rcu \
